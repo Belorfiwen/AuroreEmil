@@ -4,8 +4,9 @@ public class Equipe
 	private boolean sensDeJeu;
 	private But but;
 
-	Equipe 
+	Equipe (String nom, boolean sensDeJeu)
 	{
-		
+		this.nom = nom;
+		this.sensDeJeu = sensDeJeu;
 	}
 }
