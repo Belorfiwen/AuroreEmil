@@ -8,28 +8,28 @@ public class Terrain
 		this.ligne = 20;
 		this.colonne = 40;
 		this.largeurBut = 14;
-		this.positionButA = ((terrain.ligne - terrain.largeurBut)/2) -1;
-		this.positionButB = ((terrain.ligne - terrain.largeurBut)/2) + terrain.largeurBut -1;
+		this.positionButA = ((this.ligne - this.largeurBut)/2) -1;
+		this.positionButB = ((this.ligne - this.largeurBut)/2) + this.largeurBut -1;
 		for (int i=0;i<ligne;i++)
 		{
 			for (int j=0; j<colonne;j++) 
 			{
-				this.grille [i][j] = new Playable();
+				this.grille [i][j] = null;
 			}
 		}
 	}
 	Terrain (int ligne, int colonne, int largeurBut)
 	{
 		this.ligne = ligne;
-		this.colonne = colone;
+		this.colonne = colonne;
 		this.largeurBut = largeurBut;
-		this.positionButA = ((terrain.ligne - terrain.largeurBut)/2) -1;
-		this.positionButB = ((terrain.ligne - terrain.largeurBut)/2) + terrain.largeurBut -1;
+		this.positionButA = ((this.ligne - this.largeurBut)/2) -1;
+		this.positionButB = ((this.ligne - this.largeurBut)/2) + this.largeurBut -1;
 		for (int i=0;i<ligne;i++)
 		{
 			for (int j=0; j<colonne;j++) 
 			{
-				this.grille [i][j] = new Playable();
+				this.grille [i][j] = null;
 			}
 		}
 	}
@@ -47,7 +47,7 @@ public class Terrain
 		return (p.x == -1)? true : false; 
 	}*/
 
-	String toString ()
+	public String toString ()
 	{
 		String res = "";
 		for (int i=0;i<(ligne);i++)
@@ -64,13 +64,13 @@ public class Terrain
 				}
 				else if ((i == 0)||(i == ligne-1))
 				{
-					if ((j<this.positionA)&&(j>this.positionB))
+					if ((j<this.positionButA)&&(j>this.positionButB))
 					{
 						res = res+"#";
 					}
 					else 
 					{
-						if (grille [i][j].pos.x != -1)
+						if (grille [i][j] != null)
 						{
 							res = res+grille[i][j].toString();
 						}
@@ -82,7 +82,7 @@ public class Terrain
 				}
 				else if (i == (ligne/2))
 				{
-					if (grille [i][j].pos.x != -1)
+					if (grille [i][j] != null)
 					{
 						res = res+grille[i][j].toString();
 					}
@@ -93,7 +93,7 @@ public class Terrain
 				}
 				else
 				{
-					if (grille [i][j].pos.x != -1)
+					if (grille [i][j] != null)
 					{
 						res = res+grille[i][j].toString();
 					}
@@ -104,6 +104,7 @@ public class Terrain
 				}
 			}
 		}
+		return res;
 	}
 
 }

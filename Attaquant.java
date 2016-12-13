@@ -19,7 +19,7 @@ public abstract class Attaquant extends Personnage
 		return nbAttaquant;
 	}
 	
-	Direction move ()
+	/*void move ()
 	{
 		nombre = Math.random();
 		
@@ -54,7 +54,5 @@ public abstract class Attaquant extends Personnage
 		{
 			d.getZ = 0;
 		}
-		
-		return d;
-	}
+	}*/
 }
