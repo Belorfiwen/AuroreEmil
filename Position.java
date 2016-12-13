@@ -14,4 +14,15 @@ public class Position
 		y = 0;
 	}
 	
+	// fonction get()
+	int getX ()
+	{
+		return x;
+	}
+	
+	int getY ()
+	{
+		return y;
+	}
+	
 }

@@ -16,4 +16,15 @@ public class Direction
 		z = 0;
 	}
 	
+	// fonction get()
+	int getW ()
+	{
+		return w;
+	}
+	
+	int getZ ()
+	{
+		return z;
+	}
+	
 }
