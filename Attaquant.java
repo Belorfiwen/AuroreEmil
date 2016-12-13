@@ -1,6 +1,6 @@
 public abstract class Attaquant extends Personnage
 {
-	int nbAttaquant = 3;
+	private static int nbAttaquant = 3;
 	
 	// ajouter les classes move (), shoot ()
 	

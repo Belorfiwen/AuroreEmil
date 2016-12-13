@@ -1,6 +1,6 @@
 public abstract class Milieu extends Personnage
 {
-	int nbMilieu = 3;
+	private static int nbMilieu = 3;
 	
 	
 	// ajouter les classes move (), shoot ()

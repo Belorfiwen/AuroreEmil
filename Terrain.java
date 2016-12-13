@@ -75,7 +75,7 @@ public class Terrain
 					{
 						if (grille [i][j].pos.x != -1)
 						{
-							res = res+grille[i][j].car;
+							res = res+grille[i][j].toString();
 						}
 						else
 						{
@@ -87,7 +87,7 @@ public class Terrain
 				{
 					if (grille [i][j].pos.x != -1)
 					{
-						res = res+grille[i][j].car;
+						res = res+grille[i][j].toString();
 					}
 					else
 					{
@@ -98,7 +98,7 @@ public class Terrain
 				{
 					if (grille [i][j].pos.x != -1)
 					{
-						res = res+grille[i][j].car;
+						res = res+grille[i][j].toString();
 					}
 					else
 					{

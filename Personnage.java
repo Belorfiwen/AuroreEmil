@@ -1,4 +1,4 @@
-public abstract class Personnage extends Jeu
+public abstract class Personnage extends Jeu implements Playable
 {
 
 }
