@@ -4,7 +4,6 @@ public class Direction
 	int z;
 	int w;
 	
-	// fonction get()
 	Direction(int w, int z)
 	{
 		this.z = z;
