@@ -37,6 +37,23 @@ public class Terrain
 		}
 	}
 
+	//fonction get()
+	int getLigne()
+	{
+		return this.ligne;
+	}
+	
+	int getColonne ()
+	{
+		return this.colonne;
+	}
+	
+	int getLargeurBut()
+	{
+		return this.largeurBut;
+	}
+	
+	//initialise le placement de chaque joueur au debut d'une partie
 	void start ()
 	{
 		// 6 Attaquants
