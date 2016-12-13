@@ -8,4 +8,15 @@ public class Equipe
 		this.nom = nom;
 		this.sensDeJeu = sensDeJeu;
 	}
+	
+	// fonction get()
+	String getNom
+	{
+		return nom;
+	}
+	
+	boolean getSensDeJeu
+	{
+		return sensDeJeu;
+	}
 }

@@ -8,4 +8,10 @@ public abstract class Defense extends Personnage
 	{
 		return "=";
 	}
+	
+	// fonction get()
+	int getNbDefenseur ()
+	{
+		return nbDefenseur;
+	}
 }

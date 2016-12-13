@@ -9,4 +9,10 @@ public abstract class Attaquant extends Personnage
 		return "?";
 		//comparer si e1 "^" si e2 "v"
 	}
+	
+	// fonction get()
+	int getNbAttaquant ()
+	{
+		return nbAttaquant;
+	}
 }

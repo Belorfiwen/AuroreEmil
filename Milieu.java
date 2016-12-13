@@ -9,4 +9,11 @@ public abstract class Milieu extends Personnage
 	{
 		return "X";
 	}
+	
+	// fonction get()
+	int getNbMilieu
+	{
+		return nbMilieu;
+	}
+	
 }
