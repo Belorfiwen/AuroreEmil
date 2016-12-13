@@ -11,7 +11,7 @@ public abstract class Milieu extends Personnage
 	}
 	
 	// fonction get()
-	int getNbMilieu
+	int getNbMilieu ()
 	{
 		return nbMilieu;
 	}

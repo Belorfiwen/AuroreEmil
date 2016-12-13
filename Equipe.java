@@ -10,12 +10,12 @@ public class Equipe
 	}
 	
 	// fonction get()
-	String getNom
+	String getNom ()
 	{
 		return nom;
 	}
 	
-	boolean getSensDeJeu
+	boolean getSensDeJeu ()
 	{
 		return sensDeJeu;
 	}

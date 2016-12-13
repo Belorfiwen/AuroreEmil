@@ -5,7 +5,7 @@ public abstract class Joueur extends Personnage
 	protected Equipe e2 = new Equipe("equipe2", false);
 	
 	// fonction get()
-	int getNbJoueur
+	int getNbJoueur ()
 	{
 		return nbJoueur;
 	}
