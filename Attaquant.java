@@ -15,7 +15,7 @@ public class Attaquant extends Personnage
 	
 	public String toString ()
 	{
-		return "A";
+		return "\u001B[31m" + "A" + "\u001B[0m";
 		//comparer si e1 "^" si e2 "v"
 	}
 
