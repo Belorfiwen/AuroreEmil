@@ -2,6 +2,7 @@ public class Terrain
 {
 	private int ligne, colonne, largeurBut, positionButA, positionButB;
 	private Jeu [][] grille;
+	ArrayList <Jeu> list;
 
 	Terrain ()
 	{
@@ -17,6 +18,7 @@ public class Terrain
 				this.grille [i][j] = new Jeu();
 			}
 		}
+		list = new ArrayList <Jeu> ();
 	}
 	Terrain (int ligne, int colonne, int largeurBut)
 	{
@@ -32,17 +34,14 @@ public class Terrain
 				this.grille [i][j] = new Jeu();
 			}
 		}
+		list = new ArrayList <Jeu> ();
 	}
 
 	void evolve ()
 	{
-		for (int i=0;i<ligne;i++)
+		for each (Jeu j, list)
 		{
-			for (int j=1; j<colonne-1;j++) 
-			{
-				grille[i][j].move;
-				grille[i][j].shot;
-			}
+				j.move;
 		}
 	}
 
@@ -68,7 +67,7 @@ public class Terrain
 				}
 				else if ((i == 0)||(i == ligne-1))
 				{
-					if ((j<this.positionA)&&(j>thid.positionB))
+					if ((j<this.positionA)&&(j>this.positionB))
 					{
 						res = res+"#";
 					}
