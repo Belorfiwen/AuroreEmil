@@ -6,5 +6,8 @@ public class CholleyGarnier
 		t.start();
 		Ecran.afficherln (t.toString());
 		Ecran.afficherln(((40-20)/2)-1);
+		String ANSI_RED = "\u001B[31m";
+		String ANSI_RESET = "\u001B[0m";
+		System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
 	}
 }
