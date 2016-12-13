@@ -1,16 +1,31 @@
 import java.util.Random;
 
-public abstract class Attaquant extends Personnage
+public class Attaquant extends Personnage
 {
 	private static int nbAttaquant = 3;
 	double nombre;
+
+	Attaquant (int x, int y)
+	{
+		p = new Position (x,y);
+		d = new Direction (0,1);
+	}
 	
 	// ajouter les classes move (), shoot ()
 	
 	public String toString ()
 	{
-		return "?";
+		return "A";
 		//comparer si e1 "^" si e2 "v"
+	}
+
+	public void shot ()
+	{
+
+	}
+	public void move ()
+	{
+		
 	}
 	
 	// fonction get()
