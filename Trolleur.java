@@ -38,6 +38,11 @@ public class Trolleur extends Personnage
 					p.setX(newX);
 					p.setY(newY);
 				}
+				else
+				{
+					d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
+					d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
+				}
 			}
 			else
 			{
