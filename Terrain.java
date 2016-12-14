@@ -1,5 +1,9 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Terrain
 {
+	static int verifAJoue = 1;
 	private int ligne, colonne, largeurBut, positionButA, positionButB;
 	private Playable [][] grille;
 	private Equipe e1 = new Equipe("equipe1", true,"\u001B[31m");
@@ -114,12 +118,19 @@ public class Terrain
 		
 	}
 
-	void evolve ()
+	public void evolve()
 	{
-		int test = 1;
-		int verifAJoue = 1;
-		while (verifAJoue != 10000)
-		{
+        Timer timer = new Timer();
+        timer.schedule( new TimerTask()
+        {
+            public void run()
+            {
+                parcourEvolve();
+            }
+        },0,  100 ); // or 10000 which is 10 s. 
+    }
+	void parcourEvolve ()
+	{
 			for (int i=0;i<(ligne);i++)
 			{
 				for (int j=0; j<(colonne);j++) 
@@ -132,7 +143,6 @@ public class Terrain
 			}
 			verifAJoue++;
 			Ecran.afficherln (toString());
-		}
 	}
 
 	boolean caseLibre (int x, int y) 
