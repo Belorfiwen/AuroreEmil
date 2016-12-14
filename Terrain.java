@@ -39,7 +39,6 @@ public class Terrain
 		}
 	}
 
-<<<<<<< HEAD
 	int getLigne ()
 	{
 		return ligne;
@@ -58,17 +57,7 @@ public class Terrain
 		grille [i][j] = pl;
 	}
 
-=======
-	//fonction get()
-	int getLigne()
-	{
-		return this.ligne;
-	}
-	
-	int getColonne ()
-	{
-		return this.colonne;
-	}
+
 	
 	int getLargeurBut()
 	{
@@ -76,7 +65,6 @@ public class Terrain
 	}
 	
 	//initialise le placement de chaque joueur au debut d'une partie
->>>>>>> origin/master
 	void start ()
 	{
 		// 6 Attaquants
