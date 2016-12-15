@@ -13,12 +13,17 @@ public class Trolleur extends Personnage
 		return "@";
 	}
 
-	public void shot ()
+	public void shot (Balle balle)
 	{
+		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
+		{
+			balle.d.setZ(this.d.getZ());
+			balle.d.setW(this.d.getW());
 
+		}
 	}
 
-	public void move (Terrain t, int verifAJoue)
+	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
 		if (aJoue != verifAJoue)
 		{

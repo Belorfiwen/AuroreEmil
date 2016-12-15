@@ -8,6 +8,8 @@ public class Terrain
 	private Playable [][] grille;
 	private Equipe e1 = new Equipe("equipe1", true,"\u001B[31m");
 	private Equipe e2 = new Equipe("equipe2", false,"\u001B[32m");
+	// Balle
+	private Balle balle;
 
 	Terrain ()
 	{
@@ -16,6 +18,7 @@ public class Terrain
 		this.largeurBut = 20;
 		this.positionButA = ((this.colonne - this.largeurBut)/2) -1;
 		this.positionButB = ((this.colonne - this.largeurBut)/2) + this.largeurBut -1;
+		this.balle = new Balle (ligne/2,colonne/2);
 		grille = new Playable [this.ligne][this.colonne];
 
 		for (int i=0;i<ligne;i++)
@@ -33,6 +36,7 @@ public class Terrain
 		this.largeurBut = largeurBut;
 		this.positionButA = ((this.ligne - this.largeurBut)/2) -1;
 		this.positionButB = ((this.ligne - this.largeurBut)/2) + this.largeurBut -1;
+		this.balle = new Balle (ligne/2,colonne/2);
 		grille = new Playable [this.ligne][this.colonne];
 		for (int i=0;i<ligne;i++)
 		{
@@ -71,6 +75,8 @@ public class Terrain
 	//initialise le placement de chaque joueur au debut d'une partie
 	void start ()
 	{
+		// Balle
+		Balle balle = new Balle (0,colonne/2);
 		// 6 Attaquants
 		for (int j=(colonne/2-8); j<(colonne/2+8+1);j+=8) 
 		{
@@ -131,13 +137,14 @@ public class Terrain
     }
 	void parcourEvolve ()
 	{
+			balle.move(this.ligne,this.colonne);
 			for (int i=0;i<(ligne);i++)
 			{
 				for (int j=0; j<(colonne);j++) 
 				{
 					if ((caseLibre(i,j)) == false)
 					{
-						grille[i][j].move(this,verifAJoue);
+						grille[i][j].move(this,verifAJoue, this.balle);
 					}
 				}
 			}
@@ -173,9 +180,9 @@ public class Terrain
 					}
 					else 
 					{
-						if (grille [i][j] != null)
+						if ((balle.p.getX()==i)&&balle.p.getY()==j)
 						{
-							res = res+grille[i][j].toString();
+							res = res+balle.toString();
 						}
 						else
 						{
@@ -191,7 +198,14 @@ public class Terrain
 					}
 					else
 					{
-						res = res+"-";
+						if ((balle.p.getX()==i)&&balle.p.getY()==j)
+						{
+							res = res+balle.toString();
+						}
+						else
+						{
+							res = res+"-";
+						}
 					}
 				}
 				else
@@ -202,7 +216,14 @@ public class Terrain
 					}
 					else
 					{
-						res = res+" ";
+						if ((balle.p.getX()==i)&&balle.p.getY()==j)
+						{
+							res = res+balle.toString();
+						}
+						else
+						{
+							res = res+" ";
+						}
 					}
 				}
 			}

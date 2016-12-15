@@ -18,11 +18,16 @@ public class Attaquant extends Joueur
 		//comparer si e1 "^" si e2 "v"
 	}
 
-	public void shot ()
+	public void shot (Balle balle)
 	{
+		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
+		{
+			balle.d.setZ(this.d.getZ());
+			balle.d.setW(this.d.getW());
 
+		}
 	}
-	public void move (Terrain t, int verifAJoue)
+	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
 		if (aJoue != verifAJoue)
 		{
@@ -54,6 +59,7 @@ public class Attaquant extends Joueur
 				d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 				d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 			}
+			this.shot(balle);
 		}
 	}
 	
@@ -62,41 +68,4 @@ public class Attaquant extends Joueur
 	{
 		return nbAttaquant;
 	}
-	
-	/*void move ()
-	{
-		nombre = Math.random();
-		
-		if ( nombre < 0.33)
-		{
-			d.getW() = -1;
-		}
-		
-		if (nombre < 0.66)
-		{
-			d.getW() = 1;
-		}
-		
-		else 
-		{
-			d.getW = 0;
-		}
-		
-		nombre = Math.random();
-		
-		if ( nombre < 0.33)
-		{
-			d.getZ() = -1;
-		}
-		
-		if (nombre < 0.66)
-		{
-			d.getZ() = 1;
-		}
-		
-		else 
-		{
-			d.getZ = 0;
-		}
-	}*/
 }
