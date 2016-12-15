@@ -75,26 +75,26 @@ public class Balle
 		}
 		else if ((d.getZ()== 1)&&(d.getW()== -1))
 		{
-			if ((p.getX()+d.getZ() != ligne-1) && (p.getX()+d.getW() != 0))
+			if ((p.getX()+d.getZ() != ligne-1) && (p.getY()+d.getW() != 0))
 			{
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == ligne -1) && (p.getX()+d.getW() == 0))
+			else if ((p.getX()+d.getZ() == ligne -1) && (p.getY()+d.getW() == 0))
 			{
 				d.setZ(-1);
 				d.setW(1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == ligne -1) && (p.getX()+d.getW() != 0))
+			else if ((p.getX()+d.getZ() == ligne -1) && (p.getY()+d.getW() != 0))
 			{
 				d.setZ(-1);
 				d.setW(-1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() != ligne -1) && (p.getX()+d.getW() == 0))
+			else if ((p.getX()+d.getZ() != ligne -1) && (p.getY()+d.getW() == 0))
 			{
 				d.setZ(-1);
 				d.setW(1);
@@ -104,26 +104,26 @@ public class Balle
 		}
 		else if ((d.getZ()==- 1)&&(d.getW()== 1))
 		{
-			if ((p.getX()+d.getZ() != 0) && (p.getX()+d.getW() != colonne-1))
+			if ((p.getX()+d.getZ() != 0) && (p.getY()+d.getW() != colonne-1))
 			{
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == 0) && (p.getX()+d.getW() == colonne-1))
+			else if ((p.getX()+d.getZ() == 0) && (p.getY()+d.getW() == colonne-1))
 			{
 				d.setZ(1);
 				d.setW(-1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == 0) && (p.getX()+d.getW() != colonne-1))
+			else if ((p.getX()+d.getZ() == 0) && (p.getY()+d.getW() != colonne-1))
 			{
 				d.setZ(1);
 				d.setW(1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() != 0) && (p.getX()+d.getW() == colonne-1))
+			else if ((p.getX()+d.getZ() != 0) && (p.getY()+d.getW() == colonne-1))
 			{
 				d.setZ(-1);
 				d.setW(-1);
@@ -133,26 +133,26 @@ public class Balle
 		}
 		else if ((d.getZ()== -1)&&(d.getW()== -1))
 		{
-			if ((p.getX()+d.getZ() != 0) && (p.getX()+d.getW() != 0))
+			if ((p.getX()+d.getZ() != 0) && (p.getY()+d.getW() != 0))
 			{
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == 0) && (p.getX()+d.getW() == 0))
+			else if ((p.getX()+d.getZ() == 0) && (p.getY()+d.getW() == 0))
 			{
 				d.setZ(1);
 				d.setW(1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == 0) && (p.getX()+d.getW() != 0))
+			else if ((p.getX()+d.getZ() == 0) && (p.getY()+d.getW() != 0))
 			{
 				d.setZ(1);
 				d.setW(-1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() != 0) && (p.getX()+d.getW() == 0))
+			else if ((p.getX()+d.getZ() != 0) && (p.getY()+d.getW() == 0))
 			{
 				d.setZ(-1);
 				d.setW(1);
@@ -162,26 +162,26 @@ public class Balle
 		}
 		else if ((d.getZ()== 1)&&(d.getW()== 1))
 		{
-			if ((p.getX()+d.getZ() != ligne-1) && (p.getX()+d.getW() != colonne-1))
+			if ((p.getX()+d.getZ() != ligne-1) && (p.getY()+d.getW() != colonne-1))
 			{
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == ligne-1) && (p.getX()+d.getW() == colonne-1))
+			else if ((p.getX()+d.getZ() == ligne-1) && (p.getY()+d.getW() == colonne-1))
 			{
 				d.setZ(-1);
 				d.setW(-1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() == ligne-1) && (p.getX()+d.getW() != colonne-1))
+			else if ((p.getX()+d.getZ() == ligne-1) && (p.getY()+d.getW() != colonne-1))
 			{
 				d.setZ(-1);
 				d.setW(1);
 				p.setX(p.getX()+d.getZ());
 				p.setY(p.getY()+d.getW());
 			}
-			else if ((p.getX()+d.getZ() != ligne-1) && (p.getX()+d.getW() == colonne-1))
+			else if ((p.getX()+d.getZ() != ligne-1) && (p.getY()+d.getW() == colonne-1))
 			{
 				d.setZ(1);
 				d.setW(-1);

@@ -55,6 +55,7 @@ public class Trolleur extends Personnage
 				d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 				d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 			}
+			this.shot(balle);
 		}
 	}
 	
