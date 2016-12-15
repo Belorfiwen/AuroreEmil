@@ -22,10 +22,11 @@ public class Equipe
 	{
 		return nom;
 	}
-		String getColor ()
+	String getColor ()
 	{
 		return color;
 	}
+	
 	
 	boolean getSensDeJeu ()
 	{

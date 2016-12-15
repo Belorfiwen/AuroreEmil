@@ -6,8 +6,8 @@ public class Terrain
 	static int verifAJoue = 1;
 	private int ligne, colonne, largeurBut, positionButA, positionButB;
 	private Playable [][] grille;
-	private Equipe e1 = new Equipe("equipe1", true,"\u001B[31m");
-	private Equipe e2 = new Equipe("equipe2", false,"\u001B[32m");
+	private Equipe e1 = new Equipe("Rouge", true,"\u001B[31m");
+	private Equipe e2 = new Equipe("Vert", false,"\u001B[32m");
 	// Balle
 	private Balle balle;
 
@@ -54,6 +54,15 @@ public class Terrain
 	int getColonne ()
 	{
 		return colonne;
+	}
+
+	int getPositionButA ()
+	{
+		return positionButA;
+	}
+	int getPositionButB ()
+	{
+		return positionButB;
 	}
 
 	Playable getElementGrille (int i, int j)
@@ -126,19 +135,28 @@ public class Terrain
 
 	public void evolve()
 	{
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
         timer.schedule( new TimerTask()
         {
             public void run()
             {
-                parcourEvolve();
-
+                int but = parcourEvolve();
+                if (but == 1) 
+                {
+                	timer.cancel();
+                	Ecran.afficherln ("l'équipe "+e2.getNom()+" a gagné");
+                }
+                else if (but == -1)
+                {
+                	timer.cancel();
+                	Ecran.afficherln ("l'équipe "+e1.getNom()+" a gagné");
+                }
             }
         },0,  100 ); // or 10000 which is 10 s. 
     }
-	void parcourEvolve ()
+	int parcourEvolve ()
 	{
-			balle.move(this.ligne,this.colonne);
+			int but = balle.move(this);
 			for (int i=0;i<(ligne);i++)
 			{
 				for (int j=0; j<(colonne);j++) 
@@ -151,6 +169,7 @@ public class Terrain
 			}
 			verifAJoue++;
 			Ecran.afficherln (toString());
+			return but;
 	}
 
 	boolean caseLibre (int x, int y) 

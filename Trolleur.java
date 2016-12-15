@@ -10,7 +10,7 @@ public class Trolleur extends Personnage
 	
 	public String toString ()
 	{
-		return "@";
+		return "\u001B[36m"+"@"+"\u001B[0m";
 	}
 
 	public void shot (Balle balle)
