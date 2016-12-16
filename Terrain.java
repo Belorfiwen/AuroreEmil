@@ -151,6 +151,10 @@ public class Terrain
                 	timer.cancel();
                 	Ecran.afficherln ("l'équipe "+e1.getNom()+" a gagné");
                 }
+                if (CholleyGarnier.choix == 2)
+                {
+                	Clavier.saisirString();
+                }
             }
         },0,  100 ); // or 10000 which is 10 s. 
     }

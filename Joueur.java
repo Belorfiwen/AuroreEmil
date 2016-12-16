@@ -1,6 +1,6 @@
 public abstract class Joueur extends Personnage
 {
-	protected static int nbJoueur = 11;
+	protected static int nbJoueur = 11; // non utilisé
 	Equipe e;
 
 	Joueur (int x, int y,int z, int w, Equipe e)
