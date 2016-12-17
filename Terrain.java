@@ -6,8 +6,8 @@ public class Terrain
 	static int verifAJoue = 1;
 	private int ligne, colonne, largeurBut, positionButA, positionButB;
 	private Playable [][] grille;
-	private Equipe e1 = new Equipe("Rouge", true,"\u001B[31m");
-	private Equipe e2 = new Equipe("Vert", false,"\u001B[32m");
+	private Equipe e1 = new Equipe("Rouge", 1,"\u001B[31m");
+	private Equipe e2 = new Equipe("Vert", -1,"\u001B[32m");
 	// Balle
 	private Balle balle;
 

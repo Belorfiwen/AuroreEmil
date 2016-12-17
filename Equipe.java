@@ -1,16 +1,16 @@
 public class Equipe 
 {
 	private String nom;
-	private boolean sensDeJeu; // non utilisé pour l'instant
+	private int sensDeJeu; 
 	private String color; // blanc par default
 
 	Equipe ()
 	{
 		this.nom = "nom";
-		this.sensDeJeu = false; 
+		this.sensDeJeu = 0; 
 		this.color = "\u001B[37m"; 
 	}
-	Equipe (String nom, boolean sensDeJeu, String color)
+	Equipe (String nom, int sensDeJeu, String color)
 	{
 		this.nom = nom;
 		this.sensDeJeu = sensDeJeu;
@@ -26,7 +26,7 @@ public class Equipe
 	{
 		return color;
 	}
-	boolean getSensDeJeu ()
+	int getSensDeJeu ()
 	{
 		return sensDeJeu;
 	}
