@@ -25,26 +25,26 @@ public abstract class Joueur extends Personnage
 		{
 			z = 1;
 		}
-		else if (joueur.getX() == cible.getX())
+		else if (joueur.getX() > cible.getX())
 		{
-			z = 0;
+			z = -1;
 		}
 		else
 		{
-			z = -1;
+			z = 0;
 		}
 
 		if (joueur.getY() < cible.getY())
 		{
 			w = 1;
 		}
-		else if (joueur.getY() == cible.getY())
+		else if (joueur.getY() > cible.getY())
 		{
-			w = 0;
+			w = -1;
 		}
 		else
 		{
-			w = -1;
+			w = 0;
 		}
 		res = new Direction (z,w);
 		return res;
