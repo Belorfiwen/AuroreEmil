@@ -16,12 +16,9 @@ public class Defense extends Joueur
 	}
 		public void shot (Balle balle)
 	{
-		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
-		{
-			balle.d.setZ(this.d.getZ());
-			balle.d.setW(this.d.getW());
+			balle.d.setZ(this.e.getSensDeJeu());
+			balle.d.setW(0);
 
-		}
 	}
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
@@ -29,8 +26,12 @@ public class Defense extends Joueur
 		{
 			aJoue++;
 
+			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
+			{
+				this.shot(balle);
+			}
 			// Si à porté de la balle
-			if ((Math.abs(p.getX()-(balle.p.getX())) < 5)&&(Math.abs(p.getY()-(balle.p.getY())) < 5))
+			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) < 5)&&(Math.abs(positionBase.getY()-(balle.p.getY())) < 5))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
@@ -104,12 +105,11 @@ public class Defense extends Joueur
 					d.setW(0);
 				}
 			}
-			this.shot(balle);
 		}
 	}
 	
 	// fonction get()
-	int getNbDefenseur ()
+	static int getNbDefenseur ()
 	{
 		return nbDefenseur;
 	}

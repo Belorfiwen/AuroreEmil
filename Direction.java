@@ -1,8 +1,8 @@
 public class Direction
 {
 
-	int z;
-	int w;
+	private int z;
+	private int w;
 	
 	Direction()
 	{
