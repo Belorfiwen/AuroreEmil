@@ -13,7 +13,7 @@ public class Terrain
 
 	Terrain ()
 	{
-		this.ligne = 30;
+		this.ligne = 25;
 		this.colonne = 36;
 		this.largeurBut = 20;
 		this.positionButA = ((this.colonne - this.largeurBut)/2) -1;
@@ -98,24 +98,24 @@ public class Terrain
 
 
 		// 3 Milieu
-		for (int k=colonne/(Milieu.getNbMilieu()+1)+3; k<colonne-1;k+=(colonne-1)/(Milieu.getNbMilieu()+1)-3)
+		for (int k=colonne/(Milieu.getNbMilieu()+1)-2; k<colonne-1;k+=(colonne-1)/(Milieu.getNbMilieu()+1)+2)
 		{
-				grille[8][k] = new Milieu (8,k,0,1,e1);
+				grille[(ligne/2-2)/4*3+1][k] = new Milieu ((ligne/2-2)/4*3+1,k,0,1,e1);
 		}
-		for (int l=colonne/(Milieu.getNbMilieu()+1)-1; l<colonne-1;l+=(colonne-1)/(Milieu.getNbMilieu()+1)+1) 
+		for (int l=colonne/(Milieu.getNbMilieu()+1)-2; l<colonne-1;l+=(colonne-1)/(Milieu.getNbMilieu()+1)+2) 
 		{
-				grille[ligne-9][l] = new Milieu (ligne-9,l,0,-1,e2);
+				grille[ligne-(ligne/2-2)/4*3-2][l] = new Milieu (ligne-(ligne/2-2)/4*3-2,l,0,-1,e2);
 		}
 
 
 		// 3 Deffenseurs
 		for (int o=colonne/(Defense.getNbDefenseur()+1)-1; o<colonne-1;o+=(colonne-1)/(Defense.getNbDefenseur()+1)+1) 
 		{
-				grille[3][o] = new Defense (3,o,0,1,e1);
+				grille[(ligne/2-2)/4+1][o] = new Defense ((ligne/2-2)/4+1,o,0,1,e1);
 		}
 		for (int p=colonne/(Defense.getNbDefenseur()+1)-1; p<colonne-1;p+=(colonne-1)/(Defense.getNbDefenseur()+1)+1)
 		{
-				grille[ligne-4][p] = new Defense (ligne-4,p,0,-1,e2);
+				grille[ligne-(ligne/2-2)/4-2][p] = new Defense (ligne-(ligne/2-2)/4-2,p,0,-1,e2);
 		}
 
 		// 3 trolleurs

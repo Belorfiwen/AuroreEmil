@@ -36,7 +36,7 @@ public class Milieu extends Joueur
 				this.shot(balle);
 			}
 			// Si à porté de la balle
-			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) < 5)&&(Math.abs(positionBase.getY()-(balle.p.getY())) < 5))
+			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) <= (t.getLigne()/2)/4)&&(Math.abs(positionBase.getY()-(balle.p.getY())) <= (t.getColonne())/(nbMilieu)/2))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
