@@ -173,6 +173,6 @@ public class Attaquant extends Joueur
 	//fonction inutile pour Attaquant
 	public int getSensDeJeuEquipe ()  
 	{
-		return 0;
+		return e.getSensDeJeu();
 	}
 }

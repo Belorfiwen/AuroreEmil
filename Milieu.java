@@ -15,10 +15,10 @@ public class Milieu extends Joueur
 		return e.getColor() + "X" + "\u001B[0m";
 	}
 
-	//fonction pour contourner un problème que nous avons
+	//fonction inutile dans defenseur
 	public int getSensDeJeuEquipe ()  
 	{
-		return e.getSensDeJeu();
+		return 0;
 	}
 	
 	public void shot (Balle balle,Terrain t)
@@ -32,13 +32,10 @@ public class Milieu extends Joueur
 				{
 					if ((t.getElementGrille(i,j) != null)&&(t.getElementGrille(i,j) instanceof Attaquant))
 					{
-						Ecran.afficherln (i+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+j);
-						Ecran.afficherln (t.getElementGrille(i,j).getSensDeJeuEquipe());
 						if ((t.getElementGrille(i,j).getSensDeJeuEquipe()==this.e.getSensDeJeu())&&((Math.abs(this.p.getX()-(cible.getX()))) > (Math.abs(this.p.getX()-i))))
 						{
 							cible.setX(i);
 							cible.setY(j);
-							Ecran.afficherln (i+" okokokokokokokokokokokokokokokookokokokokokkokko "+j);
 						}
 					}
 				}
