@@ -93,7 +93,7 @@ public class Terrain
 		}
 		for (int j=colonne/(Attaquant.getNbAttaquant()+1)-2; j<colonne-1;j+=(colonne-1)/(Attaquant.getNbAttaquant()+1)+2) 
 		{
-				grille[ligne/2+2][j] = new Attaquant (ligne/2+2,j,0,-1,e1);
+				grille[ligne/2+2][j] = new Attaquant (ligne/2+2,j,0,-1,e2);
 		}
 
 

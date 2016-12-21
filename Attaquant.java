@@ -15,7 +15,7 @@ public class Attaquant extends Joueur
 		return e.getColor() + "A" + "\u001B[0m";
 	}
 
-	public void shot (Balle balle)
+	public void shot (Balle balle,Terrain t)
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
@@ -29,37 +29,86 @@ public class Attaquant extends Joueur
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
-			int has = (int)( Math.random()*((1) - 0 + 1 ) ) + 0;
-			if (has == 1)
+
+			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
-				//mouvement
-				int x = p.getX();
-				int y = p.getY();
-				int newX = p.getX()+d.getZ();
-				int newY = p.getY()+d.getW();
-				//verif si position cible libre et pas mur
-				if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
+				this.shot(balle,t);
+			}
+			// Si à porté de la balle
+			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) < 5)&&(Math.abs(positionBase.getY()-(balle.p.getY())) < 5))
+			{
+				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
+				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
 				{
-					//changment position du personnage
-					t.setElementGrille(newX,newY, this);
-					t.setElementGrille(x,y, null);
-					p.setX(newX);
-					p.setY(newY);
+					Ecran.afficherln ("changement de direction vers balle !");
+					this.d.setZ((directionCible(p,balle.p)).getZ());
+					this.d.setW((directionCible(p,balle.p)).getW());
 				}
 				else
 				{
-					//changement de direction car position cible occupé ou mur
-					d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
-					d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
+					//mouvement
+					int x = p.getX();
+					int y = p.getY();
+					int newX = p.getX()+d.getZ();
+					int newY = p.getY()+d.getW();
+					//verif si position cible libre et pas mur
+					if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
+					{
+						//changment position du personnage
+						t.setElementGrille(newX,newY, this);
+						t.setElementGrille(x,y, null);
+						p.setX(newX);
+						p.setY(newY);
+					}
+					else
+					{
+						//changement de direction car position cible occupé ou mur
+						
+					}
 				}
 			}
-			else
+			//si pas à porté de la balle et pas sur position de base
+			else if ((p.getX() != positionBase.getX())||((p.getY() != positionBase.getY())))
 			{
-				//changement de direction
-				d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
-				d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
+				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition de base : "+positionBase.getX()+";"+positionBase.getY()+"\nposition cible : "+(directionCible(p,positionBase)).getZ()+","+(directionCible(p,positionBase)).getW()+"\n");
+				if ((d.getZ() != (directionCible(p,positionBase)).getZ())||(d.getW() != (directionCible(p,positionBase)).getW()))
+				{
+					Ecran.afficherln ("changement de direction vers position de base");
+					this.d.setZ((directionCible(p,positionBase)).getZ());
+					this.d.setW((directionCible(p,positionBase)).getW());
+				}
+				else
+				{
+					//mouvement
+					int x = p.getX();
+					int y = p.getY();
+					int newX = p.getX()+d.getZ();
+					int newY = p.getY()+d.getW();
+					//verif si position cible libre et pas mur
+					if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
+					{
+						//changment position du personnage
+						t.setElementGrille(newX,newY, this);
+						t.setElementGrille(x,y, null);
+						p.setX(newX);
+						p.setY(newY);
+					}
+					else
+					{
+						//changement de direction car position cible occupé ou mur
+						
+					}
+				}
+				
 			}
-			this.shot(balle);
+			else    // Si sur position de base
+			{
+				if ((d.getZ() != e.getSensDeJeu())||(d.getW() != 0))
+				{
+					d.setZ(e.getSensDeJeu());
+					d.setW(0);
+				}
+			}
 		}
 	}
 	

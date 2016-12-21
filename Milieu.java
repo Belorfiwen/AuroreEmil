@@ -16,26 +16,27 @@ public class Milieu extends Joueur
 		return e.getColor() + "X" + "\u001B[0m";
 	}
 	
-	public void shot (Balle balle)
+	public void shot (Balle balle,Terrain t)
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
-		{int x,y = 1000;
+		{
+			Position cible = new Position (1000,1000);
 			for (int i = 1; i<t.getLigne()-1; i++)
 			{
 				for (int j = 1; j<t.getLigne()-1; j++)
 				{
-					if ((grille[i][j] != null)&&(grille[i][j].e.getSensDeJeu() == this.e.getSensDeJeu())&&(grille[i][j] instanceof Attaquant))
+					if ((t.getElementGrille(i,j) != null)&&(t.getElementGrille(i,j) instanceof Attaquant))
 					{
-						if (x+y > i+j)
+						if ((t.getElementGrille(i,j).toString() == "\u001B[37m"+ "A" + "\u001B[0m")&&((Math.abs(this.p.getX()-(cible.getX())))+(Math.abs(this.p.getY()-(cible.getY()))) > (Math.abs(this.p.getX()-i)+(Math.abs(this.p.getY()-j)))))
 						{
-							x = i;
-							y = j;
+							cible.setX(i);
+							cible.setY(j);
 						}
 					}
 				}
 			}
-			balle.d.setZ(this.d.getZ());
-			balle.d.setW(this.d.getW());
+			balle.d.setZ((directionCible(p,cible)).getZ());
+			balle.d.setW((directionCible(p,cible)).getZ());
 
 		}
 	}
@@ -47,7 +48,7 @@ public class Milieu extends Joueur
 
 			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
-				this.shot(balle);
+				this.shot(balle,t);
 			}
 			// Si à porté de la balle
 			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) <= (t.getLigne()/2)/4)&&(Math.abs(positionBase.getY()-(balle.p.getY())) <= (t.getColonne())/(nbMilieu)/2))

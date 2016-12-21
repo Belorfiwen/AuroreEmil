@@ -14,7 +14,7 @@ public class Defense extends Joueur
 	{
 		return e.getColor() + "=" + "\u001B[0m";
 	}
-		public void shot (Balle balle)
+		public void shot (Balle balle,Terrain t)
 	{
 			balle.d.setZ(this.e.getSensDeJeu());
 			balle.d.setW(0);
@@ -28,7 +28,7 @@ public class Defense extends Joueur
 
 			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
-				this.shot(balle);
+				this.shot(balle,t);
 			}
 			// Si à porté de la balle
 			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) < 5)&&(Math.abs(positionBase.getY()-(balle.p.getY())) < 5))

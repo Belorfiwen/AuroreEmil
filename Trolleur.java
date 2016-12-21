@@ -14,7 +14,7 @@ public class Trolleur extends Personnage
 		return "\u001B[36m"+"@"+"\u001B[0m";
 	}
 
-	public void shot (Balle balle)
+	public void shot (Balle balle,Terrain t)
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
@@ -59,7 +59,7 @@ public class Trolleur extends Personnage
 				d.setZ((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 				d.setW((int)( Math.random()*((2) - 0 + 1 ) ) -1);
 			}
-			this.shot(balle);
+			this.shot(balle,t);
 		}
 	}
 	
