@@ -24,12 +24,15 @@ public class Trolleur extends Personnage
 
 		}
 	}
+
 	// le trolleur bouge ou change de direction de manière aleatoire
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
+		// evite qu'un joueur joue 2 fois dans un tour à cause de son deplacement dans la grille pendant le parcours de la grille
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
+			// has sert à determiner si le trolleur bouge ou change de direction 
 			int has = (int)( Math.random()*((1) - 0 + 1 ) ) + 0;
 			if (has == 1)
 			{
@@ -69,7 +72,7 @@ public class Trolleur extends Personnage
 	{
 		return nbTrolleur;
 	}
-//fonction inutile pour trolleur
+//fonction inutile pour trolleur. sert à contourner un problème de programation
 	public int getSensDeJeuEquipe ()  
 	{
 		return 0;

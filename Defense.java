@@ -26,16 +26,11 @@ public class Defense extends Joueur
 		// has permet de donnet un peu d'aléatoire dans les mouvement du joueur. il peut ne pas bouget ce tours si.
 		int has = (int)(Math.random()*(3-0)+0);
 
-		// tir permet de savoir si le joeur vient de tirer. si oui il ne fait rien ce tour si.
-		int tir =0;
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
-			if (tir == 1)
-			{
-				tir = 0;
-			}
-			else if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
+
+			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
 				this.shot(balle,t);
 			}
@@ -63,11 +58,6 @@ public class Defense extends Joueur
 					t.setElementGrille(x,y, null);
 					p.setX(newX);
 					p.setY(newY);
-				}
-				else
-				{
-					//changement de direction car position cible occupé ou mur
-					
 				}
 
 				//si après deplacement le joueur a la balle, il tir
@@ -101,11 +91,6 @@ public class Defense extends Joueur
 						t.setElementGrille(x,y, null);
 						p.setX(newX);
 						p.setY(newY);
-					}
-					else
-					{
-						//changement de direction car position cible occupé ou mur
-						
 					}
 				}
 				
