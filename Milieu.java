@@ -8,12 +8,17 @@ public class Milieu extends Joueur
 		super(x,y,z,w,e);
 	}
 	
-	
 	// ajouter les classes move (), shoot ()
 	
 	public String toString ()
 	{
 		return e.getColor() + "X" + "\u001B[0m";
+	}
+
+	//fonction pour contourner un problème que nous avons
+	public int getSensDeJeuEquipe ()  
+	{
+		return e.getSensDeJeu();
 	}
 	
 	public void shot (Balle balle,Terrain t)
@@ -28,7 +33,8 @@ public class Milieu extends Joueur
 					if ((t.getElementGrille(i,j) != null)&&(t.getElementGrille(i,j) instanceof Attaquant))
 					{
 						Ecran.afficherln (i+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+j);
-						if (( t.getElementGrille(i,j).toString().equals("\u001B[37mA\u001B[0m"))&&((Math.abs(this.p.getX()-(cible.getX()))) > (Math.abs(this.p.getX()-i))))
+						Ecran.afficherln (t.getElementGrille(i,j).getSensDeJeuEquipe());
+						if ((t.getElementGrille(i,j).getSensDeJeuEquipe()==this.e.getSensDeJeu())&&((Math.abs(this.p.getX()-(cible.getX()))) > (Math.abs(this.p.getX()-i))))
 						{
 							cible.setX(i);
 							cible.setY(j);

@@ -116,4 +116,10 @@ public class Defense extends Joueur
 	{
 		return nbDefenseur;
 	}
+
+	//fonction inutile pour defenseur
+	public int getSensDeJeuEquipe ()  
+	{
+		return 0;
+	}
 }

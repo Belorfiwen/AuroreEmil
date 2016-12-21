@@ -68,4 +68,9 @@ public class Trolleur extends Personnage
 	{
 		return nbTrolleur;
 	}
+//fonction inutile pour trolleur
+	public int getSensDeJeuEquipe ()  
+	{
+		return 0;
+	}
 }
