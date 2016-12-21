@@ -21,17 +21,18 @@ public class Milieu extends Joueur
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
 			Position cible = new Position (1000,1000);
-			for (int i = 1; i<t.getLigne()-1; i++)
+			for (int i = 0; i<t.getLigne()-1; i++)
 			{
-				for (int j = 1; j<t.getLigne()-1; j++)
+				for (int j = 0; j<t.getColonne()-1; j++)
 				{
 					if ((t.getElementGrille(i,j) != null)&&(t.getElementGrille(i,j) instanceof Attaquant))
 					{
-						if ((t.getElementGrille(i,j).toString() == "\u001B[37m"+ "A" + "\u001B[0m")&&((Math.abs(this.p.getX()-(cible.getX())))+(Math.abs(this.p.getY()-(cible.getY()))) > (Math.abs(this.p.getX()-i)+(Math.abs(this.p.getY()-j)))))
+						Ecran.afficherln (i+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+j);
+						if (( t.getElementGrille(i,j).toString().equals("\u001B[37mA\u001B[0m"))&&((Math.abs(this.p.getX()-(cible.getX()))) > (Math.abs(this.p.getX()-i))))
 						{
 							cible.setX(i);
 							cible.setY(j);
-							Ecran.afficherln (i+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+j);
+							Ecran.afficherln (i+" okokokokokokokokokokokokokokokookokokokokokkokko "+j);
 						}
 					}
 				}
