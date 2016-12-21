@@ -1,8 +1,8 @@
 public class Direction
 {
 
-	int z;
-	int w;
+	private int z;
+	private int w;
 	
 	Direction()
 	{
@@ -10,7 +10,7 @@ public class Direction
 		z = 0;
 	}
 
-	Direction(int w, int z)
+	Direction(int z, int w)
 	{
 		this.z = z;
 		this.w = w;
