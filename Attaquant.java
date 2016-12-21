@@ -3,6 +3,7 @@ import java.util.Random;
 public class Attaquant extends Joueur
 {
 	private static int nbAttaquant = 3;
+	double nombre;
 
 // paramètre du constructeur pour les valeur de position x et y et les valeurs de direction z et w
 	Attaquant (int x, int y,int z, int w, Equipe e)
@@ -64,7 +65,7 @@ public class Attaquant extends Joueur
 	}
 	
 	// fonction get()
-	static int getNbAttaquant ()
+	int getNbAttaquant ()
 	{
 		return nbAttaquant;
 	}
