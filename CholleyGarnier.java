@@ -12,6 +12,7 @@ public class CholleyGarnier
 		}
 		Terrain t = new Terrain ();
 		t.start();
+		Ecran.afficher (t.toString());
 		t.evolve();
 		
 	}
