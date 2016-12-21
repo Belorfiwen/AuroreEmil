@@ -80,18 +80,26 @@ public class Attaquant extends Joueur
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
 		// has permet de donnet un peu d'aléatoire dans les mouvement du joueur. il peut ne pas bouget ce tours si.
-		int has = (int)(Math.random()*(2-0)+0);
+		int has = (int)(Math.random()*(3-0)+0);
+
+		// tir permet de savoir si le joeur vient de tirer. si oui il ne fait rien ce tour si.
+		int tir =0;
+
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
 
+			if (tir == 1)
+			{
+				tir = 0;
+			}
 			// si le joueur commence le tours sur la balle il tir.
-			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
+			else if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
 				this.shot(balle,t);
 			}
 			// Si à porté de la balle
-			else if (((e.getSensDeJeu() == 1)? (balle.p.getX() > t.getLigne()/2-2) : (balle.p.getX() < t.getLigne()/2+2))&&(has==1))
+			else if (((e.getSensDeJeu() == 1)? (balle.p.getX() > t.getLigne()/2-2) : (balle.p.getX() < t.getLigne()/2+2))&&(has!=1))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
@@ -129,7 +137,7 @@ public class Attaquant extends Joueur
 				}
 			}
 			//si pas à porté de la balle et pas sur position de base
-			else if (((p.getX() != positionBase.getX())||((p.getY() != positionBase.getY())))&&(has==1))
+			else if (((p.getX() != positionBase.getX())||((p.getY() != positionBase.getY())))&&(has!=1))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition de base : "+positionBase.getX()+";"+positionBase.getY()+"\nposition cible : "+(directionCible(p,positionBase)).getZ()+","+(directionCible(p,positionBase)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,positionBase)).getZ())||(d.getW() != (directionCible(p,positionBase)).getW()))
