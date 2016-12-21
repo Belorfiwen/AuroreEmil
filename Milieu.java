@@ -31,6 +31,7 @@ public class Milieu extends Joueur
 						{
 							cible.setX(i);
 							cible.setY(j);
+							Ecran.afficherln (i+" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! "+j);
 						}
 					}
 				}
@@ -51,7 +52,7 @@ public class Milieu extends Joueur
 				this.shot(balle,t);
 			}
 			// Si à porté de la balle
-			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) <= (t.getLigne()/2)/4)&&(Math.abs(positionBase.getY()-(balle.p.getY())) <= (t.getColonne())/(nbMilieu)/2))
+			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) <= (t.getLigne()/2)/4)&&(Math.abs(positionBase.getY()-(balle.p.getY())) <= (t.getColonne())/(nbMilieu)/2)&&((int)(Math.random()*(2-0)+0)==1))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
@@ -60,27 +61,28 @@ public class Milieu extends Joueur
 					this.d.setZ((directionCible(p,balle.p)).getZ());
 					this.d.setW((directionCible(p,balle.p)).getW());
 				}
+				//mouvement
+				int x = p.getX();
+				int y = p.getY();
+				int newX = p.getX()+d.getZ();
+				int newY = p.getY()+d.getW();
+				//verif si position cible libre et pas mur
+				if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
+				{
+					//changment position du personnage
+					t.setElementGrille(newX,newY, this);
+					t.setElementGrille(x,y, null);
+					p.setX(newX);
+					p.setY(newY);
+				}
 				else
 				{
-					//mouvement
-					int x = p.getX();
-					int y = p.getY();
-					int newX = p.getX()+d.getZ();
-					int newY = p.getY()+d.getW();
-					//verif si position cible libre et pas mur
-					if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
-					{
-						//changment position du personnage
-						t.setElementGrille(newX,newY, this);
-						t.setElementGrille(x,y, null);
-						p.setX(newX);
-						p.setY(newY);
-					}
-					else
-					{
-						//changement de direction car position cible occupé ou mur
-						
-					}
+					//changement de direction car position cible occupé ou mur
+					
+				}
+				if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
+				{
+					this.shot(balle,t);
 				}
 			}
 			//si pas à porté de la balle et pas sur position de base

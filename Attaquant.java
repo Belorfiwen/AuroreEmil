@@ -33,7 +33,7 @@ public class Attaquant extends Joueur
 					balle.d.setW(1);
 				}
 			}
-			else if (p.getY()<t.getPositionButA())
+			else if (p.getY()>t.getPositionButA())
 			{
 				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY()-1)==null)
 				{
@@ -55,16 +55,15 @@ public class Attaquant extends Joueur
 				}
 				else
 				{
-					Ecran.afficherln((int)(Math.random()*(2-0)+0)); 
 					int has = (int)(Math.random()*(2-0)+0);
 					if (has == 0)
 					{
-						balle.d.setZ(1);
+						balle.d.setZ(e.getSensDeJeu());
 						balle.d.setW(-1);
 					}
 					else 
 					{
-						balle.d.setZ(1);
+						balle.d.setZ(e.getSensDeJeu());
 						balle.d.setW(+1);
 					}
 					
@@ -74,6 +73,7 @@ public class Attaquant extends Joueur
 	}
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
+		int has = (int)(Math.random()*(2-0)+0);
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
@@ -83,7 +83,7 @@ public class Attaquant extends Joueur
 				this.shot(balle,t);
 			}
 			// Si à porté de la balle
-			else if ((Math.abs(positionBase.getX()-(balle.p.getX())) < 5)&&(Math.abs(positionBase.getY()-(balle.p.getY())) < 5))
+			else if (((e.getSensDeJeu() == 1)? (balle.p.getX() > t.getLigne()/2-2) : (balle.p.getX() < t.getLigne()/2+2))&&(has==1))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition balle : "+balle.p.getX()+";"+balle.p.getY()+"\nposition cible : "+(directionCible(p,balle.p)).getZ()+","+(directionCible(p,balle.p)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
@@ -92,31 +92,35 @@ public class Attaquant extends Joueur
 					this.d.setZ((directionCible(p,balle.p)).getZ());
 					this.d.setW((directionCible(p,balle.p)).getW());
 				}
+				
+				//mouvement
+				int x = p.getX();
+				int y = p.getY();
+				int newX = p.getX()+d.getZ();
+				int newY = p.getY()+d.getW();
+				//verif si position cible libre et pas mur
+				if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
+				{
+					//changment position du personnage
+					t.setElementGrille(newX,newY, this);
+					t.setElementGrille(x,y, null);
+					p.setX(newX);
+					p.setY(newY);
+				}
 				else
 				{
-					//mouvement
-					int x = p.getX();
-					int y = p.getY();
-					int newX = p.getX()+d.getZ();
-					int newY = p.getY()+d.getW();
-					//verif si position cible libre et pas mur
-					if (((newX != t.getLigne()-1)&&(newX != 0)&&(newY != t.getColonne()-1)&&(newY != 0))&&(t.getElementGrille(newX,newY) == null))
-					{
-						//changment position du personnage
-						t.setElementGrille(newX,newY, this);
-						t.setElementGrille(x,y, null);
-						p.setX(newX);
-						p.setY(newY);
-					}
-					else
-					{
-						//changement de direction car position cible occupé ou mur
-						
-					}
+					//changement de direction car position cible occupé ou mur
+					
+				}
+				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
+				{
+					Ecran.afficherln ("changement de direction vers balle !");
+					this.d.setZ((directionCible(p,balle.p)).getZ());
+					this.d.setW((directionCible(p,balle.p)).getW());
 				}
 			}
 			//si pas à porté de la balle et pas sur position de base
-			else if ((p.getX() != positionBase.getX())||((p.getY() != positionBase.getY())))
+			else if (((p.getX() != positionBase.getX())||((p.getY() != positionBase.getY())))&&(has==1))
 			{
 				Ecran.afficherln ("position : "+p.getX()+","+p.getY()+"\ndirection : "+d.getZ()+","+d.getW()+"\nposition de base : "+positionBase.getX()+";"+positionBase.getY()+"\nposition cible : "+(directionCible(p,positionBase)).getZ()+","+(directionCible(p,positionBase)).getW()+"\n");
 				if ((d.getZ() != (directionCible(p,positionBase)).getZ())||(d.getW() != (directionCible(p,positionBase)).getW()))
