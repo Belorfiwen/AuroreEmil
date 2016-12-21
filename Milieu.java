@@ -20,6 +20,13 @@ public class Milieu extends Joueur
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
+			for (int i = 1; i<t.getLigne()-1; i++)
+			{
+				for (int j = 1; j<t.getLigne()-1; j++)
+				{
+				
+				}
+			}
 			balle.d.setZ(this.d.getZ());
 			balle.d.setW(this.d.getW());
 
