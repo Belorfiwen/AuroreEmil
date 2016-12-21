@@ -36,7 +36,7 @@ public class Milieu extends Joueur
 				}
 			}
 			balle.d.setZ((directionCible(p,cible)).getZ());
-			balle.d.setW((directionCible(p,cible)).getZ());
+			balle.d.setW((directionCible(p,cible)).getW());
 
 		}
 	}

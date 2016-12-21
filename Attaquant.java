@@ -19,9 +19,57 @@ public class Attaquant extends Joueur
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
-			balle.d.setZ(this.d.getZ());
-			balle.d.setW(this.d.getW());
 
+			if (p.getY()<t.getPositionButA())
+			{
+				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY()+1)==null)
+				{
+					balle.d.setZ(e.getSensDeJeu());
+					balle.d.setW(1);
+				}
+				else
+				{
+					balle.d.setZ(0);
+					balle.d.setW(1);
+				}
+			}
+			else if (p.getY()<t.getPositionButA())
+			{
+				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY()-1)==null)
+				{
+					balle.d.setZ(e.getSensDeJeu());
+					balle.d.setW(-1);
+				}
+				else
+				{
+					balle.d.setZ(0);
+					balle.d.setW(-1);
+				}
+			}
+			else
+			{
+				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY())==null)
+				{
+					balle.d.setZ(e.getSensDeJeu());
+					balle.d.setW(0);
+				}
+				else
+				{
+					Ecran.afficherln((int)(Math.random()*(2-0)+0)); 
+					int has = (int)(Math.random()*(2-0)+0);
+					if (has == 0)
+					{
+						balle.d.setZ(1);
+						balle.d.setW(-1);
+					}
+					else 
+					{
+						balle.d.setZ(1);
+						balle.d.setW(+1);
+					}
+					
+				}
+			}
 		}
 	}
 	public void move (Terrain t, int verifAJoue,Balle balle)
