@@ -133,6 +133,7 @@ public class Terrain
 		
 	}
 
+	// fonction qui gère le déroulement des tours (avec timer)
 	public void evolve()
 	{
         final Timer timer = new Timer();
@@ -158,6 +159,8 @@ public class Terrain
             }
         },0,  100 ); // or 10000 which is 10 s. 
     }
+
+    // execution d'un tours
 	int parcourEvolve ()
 	{
 			int but = balle.move(this);
@@ -175,7 +178,7 @@ public class Terrain
 			Ecran.afficherln (toString());
 			return but;
 	}
-
+	// permet de savoir si une case est libre ou non
 	boolean caseLibre (int x, int y) 
 	{
 		return (grille[x][y] == null)? true : false; 

@@ -17,6 +17,7 @@ public abstract class Joueur extends Personnage
 		return nbJoueur;
 	}
 
+	// fonction qui retourn la direction de la cible par rapport au joueur.
 	Direction directionCible(Position joueur, Position cible)
 	{
 		Direction res;

@@ -61,6 +61,8 @@ public class Defense extends Joueur
 					//changement de direction car position cible occupé ou mur
 					
 				}
+
+				//si après deplacement le joueur a la balle, il tir
 				if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 				{
 					this.shot(balle,t);

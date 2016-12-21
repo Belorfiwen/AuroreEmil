@@ -13,6 +13,7 @@ public class Balle
 		this.p = new Position(x,y);
 		this.d = new Direction(0,0);
 	}
+
 	//move () et but ()
 
 	int move (Terrain t)
@@ -197,6 +198,7 @@ public class Balle
 		}
 		return but;		
 	}
+	
 	int but (Terrain t)
 	{	//verif si but dans but 1
 		if ((((p.getY()+d.getW())>t.getPositionButA())&&((p.getY()+d.getW())<t.getPositionButB()))&&((p.getX()+d.getZ())==0))

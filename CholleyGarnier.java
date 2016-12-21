@@ -10,10 +10,16 @@ public class CholleyGarnier
 			Ecran.afficherln ("\nMauvaise saisie :\n\n1 : Auto\n2 : Manuel");
 			choix = Clavier.saisirInt();
 		}
+		//initialisation de terrain
 		Terrain t = new Terrain ();
+
+		//initialisation des joueur
 		t.start();
+
+		//affichage de terrain dans sont état initial
 		Ecran.afficher (t.toString());
+
+		//execution du jeu
 		t.evolve();
-		
 	}
 }

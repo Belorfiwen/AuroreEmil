@@ -23,28 +23,37 @@ public class Milieu extends Joueur
 	
 	public void shot (Balle balle,Terrain t)
 	{
+		// si a la balle
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
+			//initialisation
 			Position cible = new Position (1000,1000);
+
+			//parcours de la grille pour chercher les attaquant de l'équipe de joueur
 			for (int i = 0; i<t.getLigne()-1; i++)
 			{
 				for (int j = 0; j<t.getColonne()-1; j++)
 				{
+					//test presence d'attaquant sur la case
 					if ((t.getElementGrille(i,j) != null)&&(t.getElementGrille(i,j) instanceof Attaquant))
 					{
+
+						//test si de la meme equipe et plus proche (dans l'axe X) que le resultat precedent.
 						if ((t.getElementGrille(i,j).getSensDeJeuEquipe()==this.e.getSensDeJeu())&&((Math.abs(this.p.getX()-(cible.getX()))) > (Math.abs(this.p.getX()-i))))
 						{
+							//attributiuon de la position de l'attaquant à cible.
 							cible.setX(i);
 							cible.setY(j);
 						}
 					}
 				}
 			}
+			// changement de direction de la balle en fonction de la position de la cible
 			balle.d.setZ((directionCible(p,cible)).getZ());
 			balle.d.setW((directionCible(p,cible)).getW());
-
 		}
 	}
+	
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
 		if (aJoue != verifAJoue)
@@ -84,6 +93,8 @@ public class Milieu extends Joueur
 					//changement de direction car position cible occupé ou mur
 					
 				}
+
+				//si à la fin de son tours le joueur a la balle, il tir.
 				if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 				{
 					this.shot(balle,t);

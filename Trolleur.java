@@ -14,6 +14,7 @@ public class Trolleur extends Personnage
 		return "\u001B[36m"+"@"+"\u001B[0m";
 	}
 
+	//le trolleur tir dans sa direction
 	public void shot (Balle balle,Terrain t)
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
@@ -23,7 +24,7 @@ public class Trolleur extends Personnage
 
 		}
 	}
-
+	// le trolleur bouge ou change de direction de manière aleatoire
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
 		if (aJoue != verifAJoue)

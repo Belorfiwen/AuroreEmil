@@ -15,11 +15,13 @@ public class Attaquant extends Joueur
 		return e.getColor() + "A" + "\u001B[0m";
 	}
 
+	//l'attaquant tir en direction des but. si la position juste devant lui en direction des but est prise il tire dans une autre direction (proche de celle desbut)
 	public void shot (Balle balle,Terrain t)
 	{
+		// si sur la balle
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
 		{
-
+			//si à gauche par rapport au but
 			if (p.getY()<t.getPositionButA())
 			{
 				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY()+1)==null)
@@ -33,6 +35,8 @@ public class Attaquant extends Joueur
 					balle.d.setW(1);
 				}
 			}
+
+			//si à à droite par rapport au but
 			else if (p.getY()>t.getPositionButA())
 			{
 				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY()-1)==null)
@@ -46,6 +50,8 @@ public class Attaquant extends Joueur
 					balle.d.setW(-1);
 				}
 			}
+
+			//si en face par rapport au but
 			else
 			{
 				if (t.getElementGrille(p.getX()+e.getSensDeJeu(),p.getY())==null)
@@ -73,11 +79,13 @@ public class Attaquant extends Joueur
 	}
 	public void move (Terrain t, int verifAJoue,Balle balle)
 	{
+		// has permet de donnet un peu d'aléatoire dans les mouvement du joueur. il peut ne pas bouget ce tours si.
 		int has = (int)(Math.random()*(2-0)+0);
 		if (aJoue != verifAJoue)
 		{
 			aJoue++;
 
+			// si le joueur commence le tours sur la balle il tir.
 			if ((p.getX() == balle.p.getX())&&(p.getY() == balle.p.getY()))
 			{
 				this.shot(balle,t);
@@ -112,6 +120,7 @@ public class Attaquant extends Joueur
 					//changement de direction car position cible occupé ou mur
 					
 				}
+				//après mouvement, si ballon alors shot
 				if ((d.getZ() != (directionCible(p,balle.p)).getZ())||(d.getW() != (directionCible(p,balle.p)).getW()))
 				{
 					Ecran.afficherln ("changement de direction vers balle !");
@@ -170,7 +179,7 @@ public class Attaquant extends Joueur
 		return nbAttaquant;
 	}
 
-	//fonction inutile pour Attaquant
+	//fonction inutile pour Attaquant. permet de resoudre un problème de programation
 	public int getSensDeJeuEquipe ()  
 	{
 		return e.getSensDeJeu();
