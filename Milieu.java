@@ -19,12 +19,19 @@ public class Milieu extends Joueur
 	public void shot (Balle balle)
 	{
 		if ((this.p.getX() == balle.p.getX())&&(this.p.getY() == balle.p.getY()))
-		{
+		{int x,y = 1000;
 			for (int i = 1; i<t.getLigne()-1; i++)
 			{
 				for (int j = 1; j<t.getLigne()-1; j++)
 				{
-				
+					if ((grille[i][j] != null)&&(grille[i][j].e.getSensDeJeu() == this.e.getSensDeJeu())&&(grille[i][j] instanceof Attaquant))
+					{
+						if (x+y > i+j)
+						{
+							x = i;
+							y = j;
+						}
+					}
 				}
 			}
 			balle.d.setZ(this.d.getZ());
