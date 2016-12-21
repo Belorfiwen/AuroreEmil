@@ -3,17 +3,17 @@ import java.util.TimerTask;
 
 public class Terrain
 {
-	private static int verifAJoue = 1;
+	static int verifAJoue = 1;
 	private int ligne, colonne, largeurBut, positionButA, positionButB;
 	private Playable [][] grille;
-	private Equipe e1 = new Equipe("Rouge", 1,"\u001B[31m");
-	private Equipe e2 = new Equipe("Vert", -1,"\u001B[32m");
+	private Equipe e1 = new Equipe("Rouge", true,"\u001B[31m");
+	private Equipe e2 = new Equipe("Vert", false,"\u001B[32m");
 	// Balle
 	private Balle balle;
 
 	Terrain ()
 	{
-		this.ligne = 25;
+		this.ligne = 30;
 		this.colonne = 36;
 		this.largeurBut = 20;
 		this.positionButA = ((this.colonne - this.largeurBut)/2) -1;
@@ -87,39 +87,38 @@ public class Terrain
 		// Balle
 		Balle balle = new Balle (0,colonne/2);
 		// 6 Attaquants
-		for (int i=colonne/(Attaquant.getNbAttaquant()+1)-2; i<colonne-1;i+=(colonne-1)/(Attaquant.getNbAttaquant()+1)+2) 
+		for (int j=(colonne/2-8); j<(colonne/2+8+1);j+=8) 
 		{
-				grille[ligne/2-2][i] = new Attaquant (ligne/2-2,i,0,1,e1);
+				grille[ligne/2-2][j] = new Attaquant (ligne/2-2,j,0,1,e1);
 		}
-		for (int j=colonne/(Attaquant.getNbAttaquant()+1)-2; j<colonne-1;j+=(colonne-1)/(Attaquant.getNbAttaquant()+1)+2) 
+		for (int j=(colonne/2-8); j<(colonne/2+8+1);j+=8) 
 		{
-				grille[ligne/2+2][j] = new Attaquant (ligne/2+2,j,0,-1,e1);
+				grille[ligne/2+2][j] = new Attaquant (ligne/2+2,j,0,-1,e2);
 		}
-
 
 		// 3 Milieu
-		for (int k=colonne/(Milieu.getNbMilieu()+1)-2; k<colonne-1;k+=(colonne-1)/(Milieu.getNbMilieu()+1)+2)
+		for (int j=(colonne/2-4); j<(colonne/2+4+1);j+=4) 
 		{
-				grille[(ligne/2-2)/4*3+1][k] = new Milieu ((ligne/2-2)/4*3+1,k,0,1,e1);
+				grille[8][j] = new Milieu (8,j,0,1,e1);
 		}
-		for (int l=colonne/(Milieu.getNbMilieu()+1)-2; l<colonne-1;l+=(colonne-1)/(Milieu.getNbMilieu()+1)+2) 
+		for (int j=(colonne/2-4); j<(colonne/2+4+1);j+=4) 
 		{
-				grille[ligne-(ligne/2-2)/4*3-2][l] = new Milieu (ligne-(ligne/2-2)/4*3-2,l,0,-1,e2);
+				grille[ligne-9][j] = new Milieu (ligne-9,j,0,-1,e2);
 		}
 
 
 		// 3 Deffenseurs
-		for (int o=colonne/(Defense.getNbDefenseur()+1)-1; o<colonne-1;o+=(colonne-1)/(Defense.getNbDefenseur()+1)+1) 
+		for (int j=6; j<colonne;j+=6) 
 		{
-				grille[(ligne/2-2)/4+1][o] = new Defense ((ligne/2-2)/4+1,o,0,1,e1);
+				grille[3][j] = new Defense (3,j,0,1,e1);
 		}
-		for (int p=colonne/(Defense.getNbDefenseur()+1)-1; p<colonne-1;p+=(colonne-1)/(Defense.getNbDefenseur()+1)+1)
+		for (int j=6; j<colonne;j+=6) 
 		{
-				grille[ligne-(ligne/2-2)/4-2][p] = new Defense (ligne-(ligne/2-2)/4-2,p,0,-1,e2);
+				grille[ligne-4][j] = new Defense (ligne-4,j,0,-1,e2);
 		}
 
 		// 3 trolleurs
-		for (int p = 0;p< Trolleur.getNbTrolleur();p++)
+		for (int i = 0;i< Trolleur.getNbTrolleur();i++)
 		{
 			int x = (int)( Math.random()*((ligne-2) - 1 + 1 ) ) + 1;
 			int y = (int)( Math.random()*((colonne-2) - 1 + 1 ) ) + 1;
@@ -128,6 +127,7 @@ public class Terrain
 				x = (int)( Math.random()*((ligne-2) - 1 + 1 ) ) + 1;
 				y = (int)( Math.random()*((colonne-2) - 1 + 1 ) ) + 1;
 			}
+			Ecran.afficherln (x+"  "+y);
 			grille[x][y] = new Trolleur (x,y,0,1);
 		}
 		
